@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สุขสันต์วันแม่</title>
+    <!-- ใช้ Tailwind CSS สำหรับการจัดสไตล์อย่างรวดเร็ว -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #F8F9FA; /* สีพื้นหลังอ่อนๆ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            cursor: pointer; /* แสดงว่าหน้าจอสามารถกดได้ */
+        }
+
+        /* คลาสที่ใช้ซ่อนองค์ประกอบ */
+        .hidden {
+            display: none;
+        }
+
+        /* แอนิเมชันเมื่อการ์ดปรากฏขึ้น */
+        @keyframes revealCard {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotateY(-90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        .card {
+            width: 90%;
+            max-width: 450px;
+            padding: 2.5rem;
+            background-color: #FFD700; /* สีเหลืองทอง */
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0; /* ซ่อนการ์ดไว้ในตอนแรก */
+            transform: scale(0.5); /* เริ่มต้นจากขนาดเล็ก */
+            animation: revealCard 1s ease-out forwards; /* ใช้แอนิเมชัน revealCard */
+            color: #4A4A4A;
+        }
+
+        .card h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #C70039; /* สีแดงเข้มสำหรับหัวข้อ */
+            margin-bottom: 1.5rem;
+        }
+
+        .card p {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .initial-message {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6C757D;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ข้อความเริ่มต้นที่ให้กด -->
+    <div id="initial-message" class="initial-message">
+        <p>กดบนหน้าจอเพื่อเปิดการ์ด</p>
+    </div>
+
+    <!-- การ์ดอวยพรที่จะถูกซ่อนไว้ในตอนแรก -->
+    <div id="mom-card" class="card hidden">
+        <h1>สุขสันต์วันแม่</h1>
+        <p>
+            ขอบคุณสำหรับทุกความรักความห่วงใยที่น้าติ้กมอบให้ลูกเสมอมา<br>
+            ขอให้วันแม่ปีนี้น้าติ้กแข็งแรงขึ้น อยู่กับหนูแล้วก็น้องไปนาน ๆ <br>
+            หนูขอโทษสำหรับทุกสิ่งที่เคยทำผิดพลาดไป และขอขอบคุณที่น้าติ้กให้อภัยหนู หนูไม่มีอะไรจะให้ นี่เป็นของขวัญเล็ก ๆ ที่หนูทำให้นะ<br>
+            หนูรักน้าติ้กที่สุดเลย
+        </p>
+        <p class="mt-4 text-sm text-gray-600">รักและคิดถึงน้าติ้กเสมอ</p>
+    </div>
+
+    <!-- โค้ด JavaScript สำหรับการจัดการเหตุการณ์คลิก -->
+    <script>
+        // เมื่อหน้าเว็บโหลดเสร็จสมบูรณ์
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialMessage = document.getElementById('initial-message');
+            const momCard = document.getElementById('mom-card');
+
+            // เพิ่ม Event Listener สำหรับการคลิกบนส่วน body ทั้งหมด
+            document.body.addEventListener('click', () => {
+                // ซ่อนข้อความเริ่มต้น
+                initialMessage.classList.add('hidden');
+                // แสดงการ์ดโดยการลบคลาส hidden ออก
+                momCard.classList.remove('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
